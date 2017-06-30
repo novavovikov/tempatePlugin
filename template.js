@@ -13,36 +13,28 @@ __________________________________________________
 
 
 (function($) {
-
-    var defaults = {};
+	var defaults = {
+		
+	};
 
     $.fn.template = function(options) {
-
-        if (this.length == 0) return this;
-
-        // support mutltiple elements
+		if (this.length == 0) return this;
+		
         if (this.length > 1) {
             this.each(function() { $(this).template(options) });
             return this;
         }
 
-        var template = {};
-
-        var el = this;
-
+		var node = {}, data = {}, el = this;
         var settings = $.extend({}, defaults, options);
 
         var methods = {
             init: function() {
-                template.root = el;
-               
-                
+                node.wrap = el;
             }
 
         };
 
         methods.init();
-
     };
-
 })(jQuery);
